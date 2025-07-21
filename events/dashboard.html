@@ -1,0 +1,30 @@
+{% extends 'events/base.html' %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-6">Organizer Dashboard</h1>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+  <div class="bg-white p-4 rounded shadow text-center">
+    <p class="text-lg font-semibold">Total Events</p>
+    <p class="text-xl">{{ total_events }}</p>
+  </div>
+  <div class="bg-white p-4 rounded shadow text-center">
+    <p class="text-lg font-semibold">Total Participants</p>
+    <p class="text-xl">{{ total_participants }}</p>
+  </div>
+  <div class="bg-white p-4 rounded shadow text-center">
+    <p class="text-lg font-semibold">Upcoming</p>
+    <p class="text-xl">{{ upcoming_events }}</p>
+  </div>
+  <div class="bg-white p-4 rounded shadow text-center">
+    <p class="text-lg font-semibold">Past</p>
+    <p class="text-xl">{{ past_events }}</p>
+  </div>
+</div>
+<h2 class="text-xl font-semibold mb-2">Today's Events</h2>
+<ul class="list-disc ml-6">
+  {% for e in todays_events %}
+    <li>{{ e.name }} — {{ e.time }} @ {{ e.location }}</li>
+  {% empty %}
+    <li>No events today.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
